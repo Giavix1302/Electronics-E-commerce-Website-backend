@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 import { USER_TYPES } from '../utils/constants.js'
 import { OBJECT_ID_RULE, OBJECT_ID_RULE_MESSAGE } from '../utils/validators.js'
 
-
+// don't use
 const updateProduct = async (req, res, next) => {
   const correctValidation = Joi.object({
     cartId: Joi.string().required().pattern(OBJECT_ID_RULE).message(OBJECT_ID_RULE_MESSAGE),

@@ -1,6 +1,7 @@
 import cors from 'cors'
+import { env } from './environment.config.js'
 
-const ENV = process.env.NODE_ENV || 'development'
+const ENV = env.NODE_ENV || 'development'
 
 const corsOptions = {
   origin: '*', // default

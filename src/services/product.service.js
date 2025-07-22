@@ -8,19 +8,19 @@ const addProduct = async (req) => {
 
     const product = {
       ...req.body,
-      imgUrl: image.path
-
+      imgUrl: image.path,
+      color: JSON.parse(req.body.color)
     }
+
     // create product
     const result = await productModel.createNew(product)
-    console.log('🚀 ~ addProduct ~ result:', result)
-    const createdProduct = await productModel.getDetail(result.insertedId)
+    const listProduct = await productModel.getListProduct()
 
     return {
       success: true,
       message: 'Product created successfully',
       data: {
-        ...createdProduct
+        ...listProduct
       }
     }
   } catch (error) {

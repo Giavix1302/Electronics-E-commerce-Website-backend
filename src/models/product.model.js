@@ -12,6 +12,8 @@ const PRODUCT_COLLECTION_SCHEMA = Joi.object({
   color: Joi.array().items(
     Joi.string().trim().strict(),
   ).default([]),
+  quantity: Joi.number().min(1).required(),
+  supplier: Joi.string().trim().strict(),
 
   createdAt: Joi.date().timestamp('javascript').default(Date.now),
   updatedAt: Joi.date().timestamp('javascript').default(null),

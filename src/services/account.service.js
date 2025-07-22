@@ -2,6 +2,7 @@ import { accountModel } from '../models/account.model.js'
 import { userService } from './user.service.js'
 import { handleHashedPassword, isMatch } from '../utils/bcrypt.js'
 import { signToken } from '../utils/jwt.js'
+import { productModel } from '../models/product.model.js'
 
 const login = async (reqBody) => {
   try {
@@ -28,17 +29,20 @@ const login = async (reqBody) => {
 
     // get user 
     const user = await userService.getDetail(account.userId)
+
     // create token
     const token = signToken({
       userId: user._id,
       role: user.role
     })
-
+    // if user === user => get order, cart 
     return {
       success: true,
       message: 'Signed in successfully.',
       data: {
-        user
+        user,
+        // (user.role === 'admin')
+
       },
       token
     }
